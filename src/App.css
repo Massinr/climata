@@ -1,38 +1,185 @@
 .App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+}
+.container{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #8afc8c;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px rgba(138, 252, 140, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.05em;
+  user-select: none;
+  transition: color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+h1:hover,
+h1:focus {
+  color: #bdfcb8;
+  text-shadow: 0 0 12px rgba(138, 252, 140, 1);
+  outline: none;
+  cursor: default;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form{
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+/* Glassy styled input with subtle reflection */
+input {
+  padding: 1.25rem 2.5rem;
+  border-radius: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 70%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e6ffe6;
+  font-size: 1.1rem;
+  font-weight: 400;
+  outline-offset: 4px;
+  outline-color: transparent;
+  width: 100%;
+  text-align: center;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.12);
+  transition:
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    outline-color 0.2s ease;
+  cursor: text;
+  margin-bottom: 1.5rem;
+}
+
+input::placeholder {
+  color: #bde5b8;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+input:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.06) 70%
+  );
+  border-color: rgba(138, 252, 140, 0.5);
+}
+
+input:focus {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.1) 70%
+  );
+  border-color: #8afc8c;
+  outline-color: #8afc8c;
+  box-shadow: inset 0 1px 5px rgba(255, 255, 255, 0.25);
+  z-index: 1;
+}
+
+/* Button styling */
+button {
+  padding: 1.25rem 2.5rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #92ff88;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline-offset: 4px;
+  outline-color: transparent;
+  text-align: center;
+  width: 100%;
+  transition:
+    background-color 0.25s ease-in-out,
+    transform 0.25s ease-in-out,
+    box-shadow 0.25s ease-in-out,
+    outline-color 0.2s ease;
+  box-shadow: 0 4px 8px rgba(146, 255, 136, 0.3);
+  user-select: none;
+  margin-bottom: 1.5rem;
+}
+
+button:hover {
+  background-color: #7bd672;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(123, 214, 114, 0.4);
+}
+
+button:focus {
+  outline-color: #4caf50;
+  box-shadow:
+    0 8px 16px rgba(123, 214, 114, 0.5),
+    0 0 0 3px rgba(138, 252, 140, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Weather display styling */
+.results {
+  background: rgba(40, 44, 52, 0.7);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #bde5b8;
+  user-select: none;
+  transition: opacity 0.4s ease;
+}
+
+.results p {
+  margin: 0.4rem 0;
+}
+
+.results .city {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #8afc8c;
+  text-shadow: 0 0 6px rgba(138, 252, 140, 0.8);
+}
+
+.results .temp {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  color: #a0fca0;
+  text-shadow: 0 0 8px rgba(138, 252, 140, 0.9);
+}
+
+.results .weather {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #b5fcb5;
+  text-transform: capitalize;
 }
