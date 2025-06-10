@@ -5,7 +5,7 @@ import './App.css';
 
 
   const api = {
-    key: '183dd81e69a6c0b7e13585993519b181',
+    key: process.env.REACT_APP_WEATHER_API_KEY,
     base: 'https://api.openweathermap.org/data/2.5/'
   };
 function App() {
@@ -32,7 +32,7 @@ function App() {
             />
             <button onClick={searchPressed}>Search</button>
           </div>
-          <div className="results">
+          <div className="results"> 
   {weather.main ? (
     <>
       <p className="city">{weather.name}</p>
